@@ -1,0 +1,376 @@
+/*
+ * KEKA CHESS COM. Every colour that belongs to the look is named once
+ * here and used by name below. The second block renames them all for
+ * cheating chess, so switching between the two looks is a matter of adding
+ * or removing the "market" style class on the root.
+ */
+
+.root {
+    /* Ordinary chess: black, red and yellow. */
+    -k-main: #e10600;
+    -k-main-light: #ff3b30;
+    -k-main-lighter: #ff5a50;
+    -k-main-dark: #b3140d;
+    -k-main-deep: #5a0f0b;
+    -k-accent: #ffd60a;
+    -k-text: #f2e6b0;
+    -k-muted: #a89f7a;
+    -k-glow: #3a0d0a;
+    -k-logo-third: #ffffff;
+
+    -fx-base: #1b1b1b;
+    -fx-background: #0e0e0e;
+    -fx-control-inner-background: #171717;
+    -fx-accent: -k-main;
+    -fx-focus-color: -k-accent;
+    -fx-faint-focus-color: transparent;
+    -fx-font-family: "DejaVu Sans", "Segoe UI", sans-serif;
+    -fx-font-size: 13px;
+}
+
+.root.market {
+    /* Cheating chess: purple, green and white. */
+    -k-main: #7b2cbf;
+    -k-main-light: #9d4edd;
+    -k-main-lighter: #b76cf0;
+    -k-main-dark: #5a189a;
+    -k-main-deep: #2a0a45;
+    -k-accent: #39ff14;
+    -k-text: #ffffff;
+    -k-muted: #b9a6cf;
+    -k-glow: #2a0a45;
+    -k-logo-third: #ffffff;
+}
+
+.label {
+    -fx-text-fill: -k-text;
+}
+
+/* The name of the game, at the top of the side panel. */
+.logo {
+    -fx-padding: 2 0 6 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.9), 0, 0, 2, 3);
+}
+.logo-red, .logo-yellow, .logo-white {
+    -fx-font-size: 23px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+}
+.logo-red { -fx-fill: -k-main-light; }
+.logo-yellow { -fx-fill: -k-accent; }
+.logo-white { -fx-fill: -k-logo-third; }
+
+.side-panel {
+    -fx-background-color: linear-gradient(to bottom, #1c1c1c, #0a0a0a);
+    -fx-border-color: -k-main;
+    -fx-border-width: 0 0 0 3;
+    -fx-padding: 12;
+    -fx-spacing: 8;
+}
+
+.section {
+    -fx-text-fill: -k-accent;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent transparent -k-main-deep transparent;
+    -fx-padding: 6 0 2 0;
+}
+
+/* Buttons look raised: lit from above, with a dark lip underneath that
+   disappears when the button is pressed down. */
+.button {
+    -fx-background-color: -k-main-deep, linear-gradient(to bottom, -k-main-light, -k-main-dark);
+    -fx-background-insets: 0, 0 0 3 0;
+    -fx-background-radius: 7, 6;
+    -fx-padding: 6 10 9 10;
+    -fx-text-fill: -k-accent;
+    -fx-font-weight: bold;
+}
+.button:hover {
+    -fx-background-color: -k-main-deep, linear-gradient(to bottom, -k-main-lighter, -k-main);
+}
+.button:pressed {
+    -fx-background-insets: 2 0 0 0, 2 0 1 0;
+    -fx-padding: 8 10 7 10;
+}
+.button:disabled {
+    -fx-opacity: 0.4;
+}
+
+.combo-box {
+    -fx-background-color: -k-main-deep, linear-gradient(to bottom, #2c2c2c, #151515);
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 6, 5;
+}
+.combo-box .list-cell {
+    -fx-text-fill: -k-accent;
+}
+.combo-box .arrow {
+    -fx-background-color: -k-accent;
+}
+.combo-box-popup .list-view {
+    -fx-background-color: #151515;
+    -fx-border-color: -k-main;
+}
+.combo-box-popup .list-view .list-cell:hover,
+.combo-box-popup .list-view .list-cell:filled:selected {
+    -fx-background-color: -k-main;
+    -fx-text-fill: #ffffff;
+}
+
+.check-box {
+    -fx-text-fill: -k-text;
+}
+.check-box .box {
+    -fx-background-color: -k-main-deep, #151515;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 4, 3;
+}
+.check-box:selected .mark {
+    -fx-background-color: -k-accent;
+}
+
+.list-view {
+    -fx-background-color: -k-main-deep, #121212;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 6, 5;
+    -fx-padding: 2;
+}
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -k-text;
+    -fx-font-family: "DejaVu Sans Mono", monospace;
+    -fx-padding: 2 6 2 6;
+}
+.list-view .list-cell:odd {
+    -fx-background-color: #1a1a1a;
+}
+
+.captures {
+    -fx-font-size: 14px;
+}
+
+.board-area {
+    -fx-background-color: radial-gradient(center 50% 45%, radius 75%, -k-glow, #0a0a0a);
+}
+
+.status-bar {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -k-accent;
+}
+
+.stats-line {
+    -fx-text-fill: -k-muted;
+    -fx-font-size: 12px;
+}
+
+.info-area {
+    -fx-background-color: #0e0e0e;
+    -fx-border-color: -k-main transparent transparent transparent;
+    -fx-border-width: 2 0 0 0;
+}
+
+/* The announcement above the board when the game ends. */
+.banner {
+    -fx-background-color: rgba(10, 10, 10, 0.88);
+    -fx-background-radius: 10;
+    -fx-border-color: -k-accent;
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+    -fx-padding: 6 26 6 26;
+    -fx-text-fill: -k-main-light;
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.9), 18, 0.2, 0, 6);
+}
+
+.dialog-pane {
+    -fx-background-color: #151515;
+}
+.dialog-pane .header-panel {
+    -fx-background-color: #1f1f1f;
+}
+.dialog-pane .header-panel .label {
+    -fx-text-fill: -k-accent;
+    -fx-font-weight: bold;
+}
+
+/* The line under the logo that only shows in cheating chess. */
+.subtitle {
+    -fx-text-fill: -k-accent;
+    -fx-font-style: italic;
+    -fx-font-size: 14px;
+    -fx-padding: 0 0 4 0;
+}
+
+/* What Jocky is saying. */
+.speech {
+    -fx-background-color: #f6f6f6;
+    -fx-background-radius: 10;
+    -fx-border-color: -k-main;
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+    -fx-padding: 4 10 4 10;
+    -fx-text-fill: #151515;
+    -fx-font-weight: bold;
+}
+
+.rules {
+    -fx-text-fill: -k-text;
+    -fx-font-size: 11px;
+}
+
+.dialog-pane .content.label {
+    -fx-text-fill: -k-text;
+}
+
+/* ----------------------------------------------------------------------
+ * Angry chaotic mode: red and black, and nothing friendly.
+ * ---------------------------------------------------------------------- */
+
+.root.angry {
+    -k-main: #b00000;
+    -k-main-light: #ff1a1a;
+    -k-main-lighter: #ff5c5c;
+    -k-main-dark: #6a0000;
+    -k-main-deep: #2b0000;
+    -k-accent: #ff1a1a;
+    -k-text: #ffd9d9;
+    -k-muted: #b07070;
+    -k-glow: #5a0000;
+    -k-logo-third: #ff1a1a;
+
+    -fx-base: #120000;
+    -fx-background: #050000;
+    -fx-control-inner-background: #0d0000;
+}
+
+.root.angry .side-panel {
+    -fx-background-color: linear-gradient(to bottom, #2a0000, #000000);
+}
+
+.root.angry .speech {
+    -fx-background-color: #1a0000;
+    -fx-text-fill: #ff3b3b;
+}
+
+/* The clocks beside the status. The side whose time is running is lit. */
+.clock {
+    -fx-font-family: "DejaVu Sans Mono", monospace;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -k-muted;
+    -fx-background-color: #151515;
+    -fx-background-radius: 6;
+    -fx-border-color: -k-main-deep;
+    -fx-border-radius: 6;
+    -fx-padding: 3 8 3 8;
+}
+.clock-running {
+    -fx-text-fill: #101010;
+    -fx-background-color: -k-accent;
+}
+.clock-low {
+    -fx-border-color: #ff1a1a;
+    -fx-border-width: 2;
+}
+
+/* The question that cannot hold itself together. */
+.glitch-box {
+    -fx-background-color: #0a0000;
+    -fx-border-color: #ff1a1a;
+    -fx-border-width: 3;
+    -fx-effect: dropshadow(gaussian, #ff0000, 30, 0.4, 0, 0);
+}
+.glitch-title {
+    -fx-font-family: "DejaVu Sans Mono", monospace;
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ff1a1a;
+}
+.glitch-warning {
+    -fx-font-family: "DejaVu Sans Mono", monospace;
+    -fx-text-fill: #cccccc;
+}
+
+/* The swarm of tiny error windows. */
+.popup {
+    -fx-background-color: #d9d9d9;
+    -fx-border-color: #000000;
+    -fx-border-width: 1;
+    -fx-min-width: 120;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 8, 0, 2, 3);
+}
+.popup-bar {
+    -fx-background-color: #b00000;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 10px;
+    -fx-padding: 1 4 1 4;
+}
+.popup-text {
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-padding: 6 10 6 10;
+}
+
+/* Rockets, storms and lava, announced across the top. */
+.chaos-banner {
+    -fx-background-color: rgba(0, 0, 0, 0.9);
+    -fx-border-color: #ff1a1a;
+    -fx-border-width: 3;
+    -fx-padding: 10 18 10 18;
+    -fx-text-fill: #ffdd00;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, #ff0000, 22, 0.3, 0, 0);
+}
+
+.reward-button {
+    -fx-max-width: infinity;
+}
+
+/* Words that flash up uninvited in angry chaotic mode. */
+.whisper {
+    -fx-font-family: "DejaVu Sans Mono", monospace;
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ff0000;
+    -fx-effect: dropshadow(gaussian, #000000, 12, 0.7, 0, 0);
+}
+
+/* The mini-game that ends a hack: a terminal, green on black. */
+.hack-panel {
+    -fx-background-color: rgba(0, 8, 0, 0.96);
+    -fx-border-color: #00ff66;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, #00ff66, 26, 0.35, 0, 0);
+}
+.hack-title {
+    -fx-font-family: "DejaVu Sans Mono", monospace;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00ff66;
+}
+.hack-text {
+    -fx-font-family: "DejaVu Sans Mono", monospace;
+    -fx-font-size: 12px;
+    -fx-text-fill: #00ff66;
+}
+.hack-button, .root.angry .hack-button {
+    -fx-background-color: #003311, #001a08;
+    -fx-background-insets: 0, 2;
+    -fx-background-radius: 4;
+    -fx-text-fill: #00ff66;
+    -fx-font-family: "DejaVu Sans Mono", monospace;
+    -fx-font-size: 22px;
+    -fx-min-width: 70;
+    -fx-min-height: 54;
+    -fx-padding: 4;
+}
+.hack-button:hover {
+    -fx-background-color: #00ff66, #003311;
+}
+.hack-button:disabled {
+    -fx-opacity: 0.25;
+}
